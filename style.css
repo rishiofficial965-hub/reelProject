@@ -1,0 +1,118 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+    to right bottom,
+    rgb(26, 26, 26),
+    rgb(29, 29, 29)
+  );
+ 
+}
+section {
+  height: 100%;
+  width: 450px;
+  background-color: black;
+  border-radius: 30px;
+  margin: auto;
+}
+
+.allReels {
+  height: 100%;
+  width: 100%;
+  border-radius: 30px;
+  scroll-snap-type:y mandatory;
+  scroll-behavior: smooth;
+  overflow-y: scroll;    
+}
+.allReels::-webkit-scrollbar{
+    display: none;
+}
+.reel {
+  height: 100%;
+  width: 100%;
+  border-radius: 30px;
+  background-color: rgb(116, 125, 127);
+  position: relative;
+  margin-bottom: 30px;
+  scroll-snap-align:start ;
+  scroll-snap-stop: always;
+}
+.reel video{
+height: 100%;
+  width: 100%;
+  border-radius: 30px;
+  object-fit: cover;
+}
+.red{
+    color:red;
+}
+.reel .bottom {
+  padding: 10px 20px;
+  color: white;
+  background: linear-gradient(
+    to bottom,
+    rgba(245, 244, 244, 0) 30%,
+    rgb(19, 18, 18) 70%
+  );
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  box-sizing: border-box;
+}
+.bottom .user {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.bottom .user img {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+.bottom .user button {
+  border-radius: 20px;
+  padding: 10px 20px;
+  background-color: transparent;
+  border: 2px solid white;
+  color: aliceblue;
+}
+.right {
+  width: 40px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: absolute;
+  right: 2%;
+  bottom: 15%;
+  color: aliceblue;
+  
+}
+.right i {
+  font-size: 25px;
+  font-weight: 300;
+  cursor:pointer;
+}
+.right h6 {
+  font-size: 13px;
+  font-weight: 300;
+}
+.a{
+    display: flex;
+    flex-direction: column;
+    line-height: 0%;
+}
