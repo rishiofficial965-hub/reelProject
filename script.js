@@ -1,3 +1,5 @@
+let allReels = document.querySelector(".allReels");
+
 const reels = [
   {
     username: "rishi_01",
@@ -52,26 +54,32 @@ const reels = [
     video: "./vedio/5999376-uhd_2160_4096_25fps.mp4",
     userProfile: "https://example.com/user5.jpg",
     shareCount: 15,
-     isFollowed: true,
+    isFollowed: true,
   },
 ];
 
-
-var sum = "";
-reels.forEach((elem) => {
-  sum += ` <div class="reel">
+function addData() {
+  var sum = "";
+  reels.forEach((elem, idx) => {
+    sum += ` <div class="reel">
           <video autoplay loop muted src="${elem.video}"></video>
           <div class="bottom">
             <div class="user">
               <img src="./download.jpg" alt="" />
               <h4>${elem.username}</h4>
-              <button>${elem.isFollowed?'follow':'unfollow'}</button>
+              <button class="button" id=${idx}>${
+      elem.isFollowed ? "follow" : "unfollow"
+    }</button>
             </div>
             <h3>${elem.caption}</h3>
           </div>
           <div class="right">
-            <div class="like a">
-              <h4 class="likeIcon">${elem.isLiked?'<i class="red ri-heart-3-fill"></i>':'<i class="ri-heart-3-line"></i>'}</h4>
+            <div id=${idx} class="like a">
+              <h4 class="likeIcon">${
+                elem.isLiked
+                  ? '<i class="red ri-heart-3-fill"></i>'
+                  : '<i class="ri-heart-3-line"></i>'
+              }</h4>
               <h6>${elem.likeCount}</h6>
             </div>
             <div class="comment a">
@@ -88,6 +96,26 @@ reels.forEach((elem) => {
             </div>
           </div>
         </div>`;
-});
+  });
 
-document.querySelector(".allReels").innerHTML = sum;
+  document.querySelector(".allReels").innerHTML = sum;
+}
+addData();
+
+allReels.addEventListener("click", (dets) => {
+  let Rel = reels[dets.target.id];
+  if (dets.target.className == "like a") {
+    if (!(Rel.isLiked == true)) {
+      Rel.likeCount++;
+      Rel.isLiked = true;
+    } else {
+      Rel.likeCount--;
+      Rel.isLiked = false;
+    }
+  }
+  else if (dets.target.className == "button") {
+    Rel.isFollowed = Rel.isFollowed == true ? false : true;
+  }
+
+  addData();
+});
